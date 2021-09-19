@@ -4,17 +4,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<String> getEanName(String ean) async {
-  final url = Uri.parse('http://bazil.si/api/v2/search/?code=$ean');
-  final response = await http.get(
-    url,
-    headers: {
-      'Authorization': 'Bearer 1J0i8MmV2BQWJrgcVnGU',
-    },
-  );
+  final url = Uri.parse('http://192.168.0.110:5000/ean/$ean');
+  final response = await http.get(url);
   print(response.body);
   final List<dynamic> data = jsonDecode(response.body);
-  if (data.isEmpty) {
-    return '';
-  }
-  return HashMap.from(data.first)['NAME'].toString();
+  return HashMap.from(data.first)['name'];
 }
