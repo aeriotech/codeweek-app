@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final itemData = await getEANItem(item.ean);
           return ItemComponent(
             name: itemData?.name ?? '',
-            description: '',
+            description: itemData?.type ?? '',
             expirationDate: item.expiration ?? DateTime.now(),
           );
         },
@@ -95,7 +95,14 @@ class _HomeScreenState extends State<HomeScreen> {
               color: CookifyColors.red,
               axisDirection: AxisDirection.down,
               child: ListView(
-                children: _items,
+                children: _items
+                    .map(
+                      (item) => GestureDetector(
+                        onTap: () => Navigator.of(context).pushNamed('/recipes'),
+                        child: item,
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           ),
