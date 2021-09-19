@@ -1,4 +1,5 @@
 import 'package:cookify/api/items.dart';
+import 'package:cookify/screens/recipes.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:cookify/widgets/cookify.scaffold.dart';
 import 'package:cookify/widgets/item.component.dart';
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: _items
                     .map(
                       (item) => GestureDetector(
-                        onTap: () => Navigator.of(context).pushNamed('/recipes'),
+                        onTap: () => Navigator.of(context).pushNamed(RecipeScreen.routeName),
                         child: item,
                       ),
                     )
