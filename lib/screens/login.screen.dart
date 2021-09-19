@@ -1,3 +1,4 @@
+import 'package:cookify/screens/selection.screen.dart';
 import 'package:cookify/widgets/button.widget.dart';
 import 'package:cookify/widgets/login_form.widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   void login() {
-    Navigator.pushNamed(context, HomeScreen.routeName);
+    Navigator.pushNamed(context, SelectionScreen.routeName);
   }
 
   @override
