@@ -7,7 +7,6 @@ class ItemComponent extends StatelessWidget {
     required this.name,
     required this.description,
     required this.expirationDate,
-    required this.imageUrl,
     this.itemCount,
   })
       : super(key: key);
@@ -15,85 +14,66 @@ class ItemComponent extends StatelessWidget {
   final String name;
   final String description;
   final String expirationDate;
-  final String imageUrl;
   final String? itemCount;
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Container(
-      width: width * 0.8,
-      height: height * 0.12,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(0, 2.0),
-                blurRadius: 2.0,
-                color: Colors.black.withOpacity(0.25))
-          ]),
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 10.0,
-          ),
-          SizedBox(
-            width: 75.0,
-            height: 75.0,
-            child: imageUrl.startsWith('http')
-                ? Image.network(imageUrl)
-                : Container(
-                    decoration: BoxDecoration(
-                      color: CookifyColors.yellow2,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: const Icon(Icons.add_photo_alternate_outlined,
-                        color: Colors.white),
-                  ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          SizedBox(
-            height: 75.0,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const CookifySeperator(
-                  width: 46.0,
-                ),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                  ),
-                ),
-                Text(
-                  expirationDate,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                  ),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+      child: Container(
+        height: height * 0.09,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0, 2.0),
+                  blurRadius: 2.0,
+                  color: Colors.black.withOpacity(0.25))
+            ]),
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 10,
             ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          SizedBox(
-              height: height * 0.12,
-              width: 80,
-              child: Stack(
+            SizedBox(
+              width: width * 0.40,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const CookifySeperator(
+                    width: 46.0,
+                  ),
+                  Text(
+                    description,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  Text(
+                    expirationDate,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: width * 0.40,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Visibility(
                     visible: itemCount != null,
@@ -105,7 +85,7 @@ class ItemComponent extends StatelessWidget {
                           width: 20.0,
                           height: 20.0,
                           decoration: const BoxDecoration(
-                              color: CookifyColors.blue, shape: BoxShape.circle),
+                              color: CookifyColors.yellow, shape: BoxShape.circle),
                           child: Align(
                               alignment: Alignment.center,
                               child: Text(
@@ -117,19 +97,24 @@ class ItemComponent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Align(
-                        alignment: Alignment.bottomRight,
+                  const Visibility(
+                    visible: true,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.topRight,
                         child: Icon(
                           Icons.error_outline,
-                          color: CookifyColors.yellow3,
-                          size: 20.0,
-                        )),
+                          color: CookifyColors.red
+                        )
+                      ),
+                    ),
                   ),
                 ],
-              )),
-        ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
