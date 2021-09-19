@@ -2,7 +2,7 @@ import 'package:cookify/screens/barcode_scan.screen.dart';
 import 'package:cookify/screens/home.screen.dart';
 import 'package:cookify/screens/selection.screen.dart';
 import 'package:cookify/screens/settings.screen.dart';
-import 'package:cookify/utils/constants/colors.dart';
+import 'package:cookify/screens/recipes.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cookify/screens/login.screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +19,7 @@ class App extends StatelessWidget {
         SelectionScreen.routeName: (context) => const SelectionScreen(),
         SettingsScreen.routeName: (context) => const SettingsScreen(),
         BarcodeScanScreen.routeName: (context) => BarcodeScanScreen(),
+        RecipeScreen.routeName: (context) => const RecipeScreen(),
       },
       initialRoute: LoginScreen.routeName,
       theme: ThemeData(
