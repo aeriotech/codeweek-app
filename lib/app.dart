@@ -1,5 +1,6 @@
 import 'package:cookify/screens/home.screen.dart';
 import 'package:cookify/screens/selection.screen.dart';
+import 'package:cookify/screens/settings.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:cookify/screens/login.screen.dart';
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
         LoginScreen.routeName: (context) => const LoginScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         SelectionScreen.routeName: (context) => const SelectionScreen(),
+        SettingsScreen.routeName: (context) => const SettingsScreen(),
       },
       initialRoute: LoginScreen.routeName,
       theme: ThemeData(

@@ -84,8 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ]
             ),
-            child: ListView(
-              children: items,
+            child: GlowingOverscrollIndicator(
+              color: CookifyColors.red,
+              axisDirection: AxisDirection.down,
+              child: ListView(
+                children: items,
+              ),
             ),
           )
         ]

@@ -1,5 +1,6 @@
 import 'package:cookify/screens/home.screen.dart';
 import 'package:cookify/screens/selection.screen.dart';
+import 'package:cookify/screens/settings.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -118,7 +119,7 @@ class CookifyScaffold extends StatelessWidget {
                   size: 30.0,
                   color: CookifyColors.yellow,
                 ),
-                onPressed: () => Navigator.pushNamed(context, 'settings'),
+                onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
               ),
             ],
           ),
