@@ -81,7 +81,7 @@ class CookifyScaffold extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(left: 8.0),
                         child: Text(
-                          '69',
+                          '57',
                           style: TextStyle(fontSize: 18.0),
                         ),
                       ),

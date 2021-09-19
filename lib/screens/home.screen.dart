@@ -1,4 +1,5 @@
 import 'package:cookify/api/items.dart';
+import 'package:cookify/screens/recipes.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:cookify/widgets/cookify.scaffold.dart';
 import 'package:cookify/widgets/item.component.dart';
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final itemData = await getEANItem(item.ean);
           return ItemComponent(
             name: itemData?.name ?? '',
-            description: '',
+            description: itemData?.type ?? '',
             expirationDate: item.expiration ?? DateTime.now(),
           );
         },
@@ -95,7 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
               color: CookifyColors.red,
               axisDirection: AxisDirection.down,
               child: ListView(
-                children: _items,
+                children: _items
+                    .map(
+                      (item) => GestureDetector(
+                        onTap: () => Navigator.of(context).pushNamed(RecipeScreen.routeName),
+                        child: item,
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           ),

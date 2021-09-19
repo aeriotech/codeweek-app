@@ -25,9 +25,17 @@ class ItemComponent extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
       child: Container(
         height: height * 0.09,
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
-          BoxShadow(offset: const Offset(0, 2.0), blurRadius: 2.0, color: Colors.black.withOpacity(0.25))
-        ]),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(0, 2.0),
+              blurRadius: 2.0,
+              color: Colors.black.withOpacity(0.25),
+            )
+          ],
+        ),
         child: Row(
           children: [
             const SizedBox(
@@ -91,9 +99,13 @@ class ItemComponent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Visibility(
-                    visible: true,
-                    child: Padding(
+                  Visibility(
+                    visible: expirationDate.isBefore(
+                      DateTime.now().add(
+                        const Duration(days: 3),
+                      ),
+                    ),
+                    child: const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Align(
                         alignment: Alignment.topRight,
