@@ -3,14 +3,14 @@ import 'package:cookify/widgets/seperator.widget.dart';
 import 'package:flutter/material.dart';
 
 class ItemComponent extends StatelessWidget {
-  const ItemComponent({Key? key,
+  const ItemComponent({
+    Key? key,
     required this.name,
     required this.description,
     required this.expirationDate,
     required this.imageUrl,
     this.itemCount,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   final String name;
   final String description;
@@ -25,15 +25,9 @@ class ItemComponent extends StatelessWidget {
     return Container(
       width: width * 0.8,
       height: height * 0.12,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(0, 2.0),
-                blurRadius: 2.0,
-                color: Colors.black.withOpacity(0.25))
-          ]),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+        BoxShadow(offset: const Offset(0, 2.0), blurRadius: 2.0, color: Colors.black.withOpacity(0.25))
+      ]),
       child: Row(
         children: [
           const SizedBox(
@@ -49,8 +43,7 @@ class ItemComponent extends StatelessWidget {
                       color: CookifyColors.yellow2,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: const Icon(Icons.add_photo_alternate_outlined,
-                        color: Colors.white),
+                    child: const Icon(Icons.add_photo_alternate_outlined, color: Colors.white),
                   ),
           ),
           const SizedBox(
@@ -104,14 +97,12 @@ class ItemComponent extends StatelessWidget {
                         child: Container(
                           width: 20.0,
                           height: 20.0,
-                          decoration: const BoxDecoration(
-                              color: CookifyColors.blue, shape: BoxShape.circle),
+                          decoration: const BoxDecoration(color: CookifyColors.blue, shape: BoxShape.circle),
                           child: Align(
                               alignment: Alignment.center,
                               child: Text(
                                 itemCount ?? '1',
-                                style: const TextStyle(
-                                    fontSize: 12.0, color: Colors.white),
+                                style: const TextStyle(fontSize: 12.0, color: Colors.white),
                               )),
                         ),
                       ),

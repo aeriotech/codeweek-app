@@ -12,7 +12,12 @@ class CookifyScaffold extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('cookify', style: TextStyle(color: Colors.black,),),
+        title: const Text(
+          'cookify',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,

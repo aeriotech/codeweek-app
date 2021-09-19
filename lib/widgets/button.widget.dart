@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CookifyButton extends StatefulWidget {
-  const CookifyButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  const CookifyButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
 
   final String text;
   final Function onPressed;
@@ -65,11 +64,7 @@ class _CookifyButtonState extends State<CookifyButton> {
                 alignment: Alignment.center,
                 child: Text(
                   widget.text,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: GoogleFonts.comfortaa().fontFamily),
+                  style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.comfortaa().fontFamily),
                 ),
               ),
             ],
