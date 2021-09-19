@@ -53,11 +53,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(
               height: 20.0,
             ),
-            Text('[$username]',
-                style: const TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                )),
+            Text(
+              '[$username]',
+              style: const TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 5.0),
             const CookifySeperator(width: 205.0),
             const SizedBox(

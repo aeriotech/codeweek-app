@@ -1,6 +1,7 @@
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:cookify/widgets/seperator.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ItemComponent extends StatelessWidget {
   const ItemComponent({
@@ -13,7 +14,7 @@ class ItemComponent extends StatelessWidget {
 
   final String name;
   final String description;
-  final String expirationDate;
+  final DateTime expirationDate;
   final String? itemCount;
 
   @override
@@ -24,15 +25,9 @@ class ItemComponent extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
       child: Container(
         height: height * 0.09,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(0, 2.0),
-                  blurRadius: 2.0,
-                  color: Colors.black.withOpacity(0.25))
-            ]),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0), boxShadow: [
+          BoxShadow(offset: const Offset(0, 2.0), blurRadius: 2.0, color: Colors.black.withOpacity(0.25))
+        ]),
         child: Row(
           children: [
             const SizedBox(
@@ -61,7 +56,7 @@ class ItemComponent extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    expirationDate,
+                    DateFormat('dd. MM. yyyy').format(expirationDate),
                     style: const TextStyle(
                       fontSize: 16.0,
                     ),
@@ -86,11 +81,12 @@ class ItemComponent extends StatelessWidget {
                           height: 20.0,
                           decoration: const BoxDecoration(color: CookifyColors.yellow, shape: BoxShape.circle),
                           child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                itemCount ?? '1',
-                                style: const TextStyle(fontSize: 12.0, color: Colors.white),
-                              )),
+                            alignment: Alignment.center,
+                            child: Text(
+                              itemCount ?? '1',
+                              style: const TextStyle(fontSize: 12.0, color: Colors.white),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -103,8 +99,8 @@ class ItemComponent extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: Icon(
                           Icons.error_outline,
-                          color: CookifyColors.red
-                        )
+                          color: CookifyColors.red,
+                        ),
                       ),
                     ),
                   ),

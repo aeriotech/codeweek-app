@@ -22,11 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  List<ItemComponent> _items = [
-    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
-    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
-    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
-  ];
+  List<ItemComponent> _items = [];
 
   void _fetchData() async {
     final items = await getItems();
@@ -37,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return ItemComponent(
             name: itemData?.name ?? '',
             description: '',
-            expirationDate: DateFormat('dd. MM. yyyy').format(item.expiration ?? DateTime.now()),
+            expirationDate: item.expiration ?? DateTime.now(),
           );
         },
       ).toList(),
