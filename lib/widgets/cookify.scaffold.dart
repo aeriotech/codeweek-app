@@ -2,6 +2,7 @@ import 'package:cookify/screens/home.screen.dart';
 import 'package:cookify/screens/selection.screen.dart';
 import 'package:cookify/screens/settings.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
+import 'package:cookify/widgets/add_item_modal/add_item_modal.widget.dart';
 import 'package:flutter/material.dart';
 
 class CookifyScaffold extends StatelessWidget {
@@ -92,7 +93,12 @@ class CookifyScaffold extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: CookifyColors.yellow,
         elevation: 2.0,
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => AddItemModal(),
+          );
+        },
         tooltip: 'Add item',
         child: const Icon(Icons.add, color: Colors.white),
       ),

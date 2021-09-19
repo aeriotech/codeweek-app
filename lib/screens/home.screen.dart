@@ -14,27 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  List <ItemComponent> items = [
-    const ItemComponent(
-      name: 'eggs',
-      description: 'a few eggies',
-      expirationDate: '18. 12. 2021',
-      itemCount: '3'
-    ),
-    const ItemComponent(
-      name: 'eggs',
-      description: 'a few eggies',
-      expirationDate: '18. 12. 2021',
-      itemCount: '3'
-    ),
-    const ItemComponent(
-      name: 'eggs',
-      description: 'a few eggies',
-      expirationDate: '18. 12. 2021',
-      itemCount: '3'
-    ),
-
+  List<ItemComponent> items = [
+    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
+    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
+    const ItemComponent(name: 'eggs', description: 'a few eggies', expirationDate: '18. 12. 2021', itemCount: '3'),
   ];
 
   @override
