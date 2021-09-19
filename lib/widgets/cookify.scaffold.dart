@@ -1,4 +1,3 @@
-import 'package:cookify/screens/home.screen.dart';
 import 'package:cookify/screens/selection.screen.dart';
 import 'package:cookify/screens/settings.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
@@ -6,11 +5,11 @@ import 'package:cookify/widgets/add_item_modal/add_item_modal.widget.dart';
 import 'package:flutter/material.dart';
 
 class CookifyScaffold extends StatelessWidget {
-  const CookifyScaffold({Key? key, required this.body, required this.title})
-      : super(key: key);
+  const CookifyScaffold({Key? key, required this.body, required this.title, required this.onItemAdd}) : super(key: key);
 
   final Widget body;
   final String title;
+  final VoidCallback onItemAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +35,13 @@ class CookifyScaffold extends StatelessWidget {
                         blurRadius: 4.0,
                         color: Colors.black.withOpacity(0.25),
                       )
-                    ]
+                    ],
                   ),
-                  child: Image.asset('assets/circular_logo.png', width: 40.0,)
-                )
+                  child: Image.asset(
+                    'assets/circular_logo.png',
+                    width: 40.0,
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment.center,
@@ -48,8 +50,8 @@ class CookifyScaffold extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 36.0,
                     fontWeight: FontWeight.bold,
-                  )
-                )
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment.topRight,
@@ -65,13 +67,16 @@ class CookifyScaffold extends StatelessWidget {
                         blurRadius: 4.0,
                         color: Colors.black.withOpacity(0.25),
                       )
-                    ]
+                    ],
                   ),
                   child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
-                        child: Image.asset('assets/circular_logo.png', width: 24.0,),
+                        child: Image.asset(
+                          'assets/circular_logo.png',
+                          width: 24.0,
+                        ),
                       ),
                       const Padding(
                         padding: EdgeInsets.only(left: 8.0),
@@ -79,10 +84,10 @@ class CookifyScaffold extends StatelessWidget {
                           '69',
                           style: TextStyle(fontSize: 18.0),
                         ),
-                      )
-                    ]
-                  )
-                )
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -93,11 +98,12 @@ class CookifyScaffold extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: CookifyColors.yellow,
         elevation: 2.0,
-        onPressed: () {
-          showDialog(
+        onPressed: () async {
+          await showDialog(
             context: context,
-            builder: (context) => AddItemModal(),
+            builder: (context) => const AddItemModal(),
           );
+          onItemAdd();
         },
         tooltip: 'Add item',
         child: const Icon(Icons.add, color: Colors.white),
@@ -116,8 +122,7 @@ class CookifyScaffold extends StatelessWidget {
                   size: 30.0,
                   color: CookifyColors.yellow,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, SelectionScreen.routeName),
+                onPressed: () => Navigator.pushNamed(context, SelectionScreen.routeName),
               ),
               IconButton(
                 icon: const Icon(

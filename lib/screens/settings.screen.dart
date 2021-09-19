@@ -26,6 +26,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return CookifyScaffold(
       title: 'settings',
+      onItemAdd: () {},
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,30 +39,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: CookifyColors.yellow2,
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 1.0),
-                    blurRadius: 4.0,
-                    color: Colors.black.withOpacity(0.25)
-                  )
+                  BoxShadow(offset: const Offset(0, 1.0), blurRadius: 4.0, color: Colors.black.withOpacity(0.25))
                 ],
               ),
               child: Align(
                 alignment: Alignment.center,
-                child: SvgPicture.network('https://avatars.dicebear.com/api/avataaars/$username.svg', width: 100.0,),
+                child: SvgPicture.network(
+                  'https://avatars.dicebear.com/api/avataaars/$username.svg',
+                  width: 100.0,
+                ),
               ),
             ),
-            const SizedBox(height: 20.0,),
-            Text(
-              '[$username]',
-              style: const TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              )
+            const SizedBox(
+              height: 20.0,
             ),
+            Text('[$username]',
+                style: const TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                )),
             const SizedBox(height: 5.0),
             const CookifySeperator(width: 205.0),
-            const SizedBox(height: 50.0,),
-            CookifyButton(text: 'reset password', onPressed: addItems, color: CookifyColors.yellow,),
+            const SizedBox(
+              height: 50.0,
+            ),
+            CookifyButton(
+              text: 'reset password',
+              onPressed: addItems,
+              color: CookifyColors.yellow,
+            ),
             const SizedBox(
               height: 20.0,
             ),

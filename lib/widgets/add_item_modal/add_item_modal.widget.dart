@@ -1,3 +1,5 @@
+import 'package:cookify/api/items.dart';
+import 'package:cookify/api/models/add_item.model.dart';
 import 'package:cookify/screens/barcode_scan.screen.dart';
 import 'package:cookify/utils/constants/colors.dart';
 import 'package:cookify/utils/ean_fetch.dart';
@@ -26,6 +28,12 @@ class _AddItemModalState extends State<AddItemModal> {
   }
 
   void _handleAddItem() {
+    addItem(
+      AddItem(
+        ean: int.parse(_barcodeController.text),
+        expiration: _expirationDate,
+      ),
+    );
     Navigator.of(context).pop();
   }
 
@@ -89,17 +97,9 @@ class _AddItemModalState extends State<AddItemModal> {
                   const SizedBox(height: 40.0),
                   const QuantitySelector(),
                   const SizedBox(height: 40.0),
-                  CookifyButton(
-                    text: 'scan barcode',
-                    onPressed: _handleScanButtonPressed,
-                    color: CookifyColors.yellow
-                  ),
+                  CookifyButton(text: 'scan barcode', onPressed: _handleScanButtonPressed, color: CookifyColors.yellow),
                   const SizedBox(height: 20.0),
-                  CookifyButton(
-                    text: 'add',
-                    onPressed: _handleAddItem,
-                    color: CookifyColors.yellow
-                  ),
+                  CookifyButton(text: 'add', onPressed: _handleAddItem, color: CookifyColors.yellow),
                 ],
               ),
             ],

@@ -7,35 +7,46 @@ const baseUrl = 'http://192.168.0.110:5000';
 
 Future<dynamic> apiGET(String endpoint) async {
   final preferences = await SharedPreferences.getInstance();
-  final token = preferences.getString('token');
+  final token = preferences.getString('token') ?? 'eyJ1c2VySWQiOiAiZWEwZTQ2ZmEtZmJkMC00MjJkLTk0ZGQtMWQ1YWM0MDViYWM0In0=';
   final url = Uri.parse(baseUrl + endpoint);
-  final response = await http.get(
-    url,
-    headers: token != null
-        ? {
-            'Authorization': 'Bearer $token',
-          }
-        : {},
-  );
+  try {
+    final response = await http.get(
+      url,
+      headers: token != null
+          ? {
+              'Authorization': 'Bearer $token',
+            }
+          : {},
+    );
 
-  final json = jsonDecode(response.body);
-  return json;
+    final json = jsonDecode(response.body);
+    return json;
+  } catch (e) {}
 }
 
 Future<dynamic> apiPOST(String endpoint, Map<String, dynamic> data) async {
   final preferences = await SharedPreferences.getInstance();
-  final token = preferences.getString('token');
+  final token = preferences.getString('token') ?? 'eyJ1c2VySWQiOiAiZWEwZTQ2ZmEtZmJkMC00MjJkLTk0ZGQtMWQ1YWM0MDViYWM0In0=';
   final url = Uri.parse(baseUrl + endpoint);
-  final response = await http.post(
-    url,
-    headers: token != null
-        ? {
-            'Authorization': 'Bearer $token',
-          }
-        : {},
-    body: data,
-  );
 
-  final json = jsonDecode(response.body);
-  return json;
+  print(jsonEncode(data));
+
+  try {
+    final response = await http.post(
+      url,
+      headers: token != null
+          ? {
+              'Authorization': 'Bearer $token',
+              'Content-Type': 'application/json'
+            }
+          : {
+              'Content-Type': 'application/json',
+            },
+      body: jsonEncode(data),
+    );
+
+    print(response.body);
+    final json = jsonDecode(response.body);
+    return json;
+  } catch (e) {}
 }
