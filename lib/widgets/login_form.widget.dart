@@ -2,11 +2,7 @@ import 'package:cookify/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CookifyLoginForm extends StatefulWidget {
-  const CookifyLoginForm({
-    Key? key,
-    required this.usernameController,
-    required this.passwordController
-  }) : super(key: key);
+  const CookifyLoginForm({Key? key, required this.usernameController, required this.passwordController}) : super(key: key);
 
   final TextEditingController usernameController;
   final TextEditingController passwordController;
@@ -44,11 +40,12 @@ class _CookifyLoginFormState extends State<CookifyLoginForm> {
           TextField(
             controller: widget.passwordController,
             decoration: InputDecoration(
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0),),
-              hintText: 'password',
-              prefixIcon: const Icon(Icons.lock),
-              suffixIcon: _buildShowPasswordButton
-            ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                hintText: 'password',
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: _buildShowPasswordButton),
             obscureText: !_showPassword,
           ),
         ],
