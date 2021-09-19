@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CookifyButton extends StatefulWidget {
-  const CookifyButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+  const CookifyButton({Key? key, required this.text, required this.onPressed, required this.color})
+      : super(key: key);
 
   final String text;
   final Function onPressed;
+  final Color color;
 
   @override
   State<CookifyButton> createState() => _CookifyButtonState();
@@ -18,22 +20,21 @@ class _CookifyButtonState extends State<CookifyButton> {
   void _setPressed(bool pressed) => setState(() => _pressed = pressed);
   void _setTriggered(bool triggered) => setState(() => _triggered = triggered);
 
-  BoxShadow _buildShadow(ColorScheme colorScheme) => _pressed || _triggered
+  BoxShadow _buildShadow() => _pressed || _triggered
       ? BoxShadow(
           offset: const Offset(0, 10.0),
           blurRadius: 35.0,
-          color: CookifyColors.yellow.withOpacity(0.3),
+          color: widget.color.withOpacity(0.3),
         )
       : BoxShadow(
           offset: const Offset(0, 10.0),
           blurRadius: 35.0,
           spreadRadius: -10.0,
-          color: CookifyColors.yellow.withOpacity(1),
+          color: widget.color.withOpacity(1),
         );
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTapDown: (_) {
         _setPressed(true);
@@ -50,10 +51,10 @@ class _CookifyButtonState extends State<CookifyButton> {
         duration: const Duration(milliseconds: 200),
         onEnd: () => _setTriggered(false),
         decoration: BoxDecoration(
-          color: CookifyColors.yellow,
+          color: widget.color,
           borderRadius: BorderRadius.circular(15.0),
           boxShadow: [
-            _buildShadow(colorScheme),
+            _buildShadow(),
           ],
         ),
         child: Padding(
@@ -64,7 +65,11 @@ class _CookifyButtonState extends State<CookifyButton> {
                 alignment: Alignment.center,
                 child: Text(
                   widget.text,
-                  style: TextStyle(color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.comfortaa().fontFamily),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: GoogleFonts.comfortaa().fontFamily),
                 ),
               ),
             ],

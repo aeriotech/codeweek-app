@@ -92,11 +92,13 @@ class _AddItemModalState extends State<AddItemModal> {
                   CookifyButton(
                     text: 'scan barcode',
                     onPressed: _handleScanButtonPressed,
+                    color: CookifyColors.yellow
                   ),
                   const SizedBox(height: 20.0),
                   CookifyButton(
                     text: 'add',
                     onPressed: _handleAddItem,
+                    color: CookifyColors.yellow
                   ),
                 ],
               ),

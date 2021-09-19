@@ -1,4 +1,5 @@
 import 'package:cookify/screens/selection.screen.dart';
+import 'package:cookify/utils/constants/colors.dart';
 import 'package:cookify/widgets/button.widget.dart';
 import 'package:cookify/widgets/login_form.widget.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               passwordController: _passwordController,
             ),
             SizedBox(height: height * 0.1),
-            CookifyButton(text: 'log in', onPressed: login),
+            CookifyButton(text: 'log in', onPressed: login, color: CookifyColors.yellow),
           ],
         ),
       ),

@@ -61,15 +61,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 5.0),
             const CookifySeperator(width: 205.0),
             const SizedBox(height: 50.0,),
-            CookifyButton(text: 'reset password', onPressed: addItems),
+            CookifyButton(text: 'reset password', onPressed: addItems, color: CookifyColors.yellow,),
             const SizedBox(
               height: 20.0,
             ),
-            CookifyButton(text: 'go pro', onPressed: addItems),
+            CookifyButton(text: 'go pro', onPressed: addItems, color: CookifyColors.yellow),
             const SizedBox(
               height: 20.0,
             ),
-            CookifyButton(text: 'log out', onPressed: addItems),
+            CookifyButton(text: 'log out', onPressed: addItems, color: CookifyColors.red),
           ],
         ),
       ),
